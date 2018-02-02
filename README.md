@@ -1,14 +1,14 @@
 # ArtFaceApp
 
-    ArtFaceApp is a [final project][1] for CS50 Harvard course "Introduction to Computer Science".
+ArtFaceApp is a [final project][1] for CS50 Harvard course "Introduction to Computer Science".
 
-    This project is a website that allows you to upload a photo of a person's face and learn about the decade of the twentieth century (1910-2000), in which this person would be in fashion, based on the similarities with the famous people of this decade. This information is used to process the uploaded photo in the style of artists and photographers of that decade.
+This project is a website that allows you to upload a photo of a person's face and learn about the decade of the twentieth century (1910-2000), in which this person would be in fashion, based on the similarities with the famous people of this decade. This information is used to process the uploaded photo in the style of artists and photographers of that decade.
 
-    This project allows you to learn more about the art of the twentieth century and popular people of that time, and also perhaps learn something more about yourself. From a technical point of view, the project is interesting because it uses computer vision techniques for face comparison and convolutional neural networks for image style transfer.
+This project allows you to learn more about the art of the twentieth century and popular people of that time, and also perhaps learn something more about yourself. From a technical point of view, the project is interesting because it uses computer vision techniques for face comparison and convolutional neural networks for image style transfer.
 
-    Working ArtFaceApp server currently can be accessed at [artfaceapp.fvds.ru][2]
+Working ArtFaceApp server currently can be accessed at [artfaceapp.fvds.ru][2]
 
-    Build Docker images can be found at [Docker Hub][3]
+Build Docker images can be found at [Docker Hub][3].
 
 ## Usage
 
@@ -36,9 +36,12 @@ $ docker pull svponomarev/tensorflow-serving-devel
 $ docker pull svponomarev/nginx-magenta
 ```
 4. Download model files
-here you can find large files that stored separately (pre-trained age & gender checkpoints converted into .pb format + colorization model):
+Here you can find large files that stored separately (pre-trained age & gender checkpoints converted into .pb format + colorization model):
+
 https://drive.google.com/open?id=1SnluAuiwTjlo4tWL8hFnuUqWQGD-D6FX
-download them & extract into root directory artFaceApp/
+
+Download them & extract into application directory artFaceApp/app/app
+
 5. Launch docker containers with docker-compose
 ```
 $ cd artFaceApp
@@ -47,19 +50,19 @@ $ docker-compose up --build
 5. Test application in browser, default adress is http://0.0.0.0:80/
 
 ## Acknowledgements
-- [ageitgey/face_recognition][4] - face detection & matching algorithm
-- [dpressel/rude-carnie][5] - age & gender prediction
-- [shunsukeaihara/colorcorrect][6] - automatic color equalization
-- [richzhang/colorization][7] - automatic image colorization
-- [acoomans/instagram-filters][8] - instagram-like image filters on Python
-- [Fred's ImageMagick Scripts: Dave Hill Effect][9]
+- [ageitgey/face_recognition][4] - face detection & matching algorithm;
+- [dpressel/rude-carnie][5] - age & gender prediction;
+- [shunsukeaihara/colorcorrect][6] - automatic color equalization;
+- [richzhang/colorization][7] - automatic image colorization;
+- [acoomans/instagram-filters][8] - instagram-like image filters on Python;
+- [Fred's ImageMagick Scripts: Dave Hill Effect][9];
 - [vigetlabs/canvas-instagram-filters][10] - instagram-style filters in HTML5 Canvas;
-- [phoboslab/WebGLImageFilter][11] - fast image filters for browsers with WebGL support; 
-- [tensorflow/magenta][12] - Fast Style Transfer for Arbitrary Styles
+- [phoboslab/WebGLImageFilter][11] - fast image filters for browsers with WebGL support;
+- [tensorflow/magenta][12] - Fast Style Transfer for Arbitrary Styles;
 - [MotionDesignStudio/ascii_movie_image][13] - Python ASCII Video And ASCII Image Creator;
-- [mosesschwartz/warhol_effect][14] - Pop-Art Warhol Effect
-- [tiangolo/uwsgi-nginx-flask-docker][15] - examples for  uWSGI and Nginx for Flask applications in Python running in a single container
-- V. Bezgachev, [How to deploy Machine Learning models with TensorFlow][16], 2017 - mantaining tensorflow service for age and gender prediction
+- [mosesschwartz/warhol_effect][14] - Pop-Art Warhol Effect;
+- [tiangolo/uwsgi-nginx-flask-docker][15] - examples for  uWSGI and Nginx for Flask applications in Python running in a single container;
+- [How to deploy Machine Learning models with TensorFlow][16], V. Bezgachev, 2017 - mantaining tensorflow service for age and gender prediction;
 
 
 ## Authors
@@ -82,3 +85,4 @@ $ docker-compose up --build
 [14]: https://github.com/mosesschwartz/warhol_effect
 [15]: https://github.com/tiangolo/uwsgi-nginx-flask-docker
 [16]: https://towardsdatascience.com/how-to-deploy-machine-learning-models-with-tensorflow-part-1-make-your-model-ready-for-serving-776a14ec3198
+
