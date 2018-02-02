@@ -1,12 +1,12 @@
 # ArtFaceApp utils/nginx_magenta
 
 This directory contains files for building supporting container with magenta neural net applying arbitrary style transfer placed on server based on uWSGI and Nginx:
-- Dockerfile - dockerfile for building nginx-magenta docker image 
-- requirements.txt - python dependencies to install
-- entrypoint.sh - bash script for configuring Nginx (also 502 error handling)
-- start.sh - bash script for supporting pre-starting commands execution, which can be added in /app/prestart.sh
-- /app - default basic project for Flask in a uWSGI Nginx Docker container with Python 2.7 
-- /magenta - current version of git repository of magenta tensorflow project (added into docker image)
+- Dockerfile - dockerfile for building nginx-magenta docker image; 
+- requirements.txt - python dependencies to install;
+- entrypoint.sh - bash script for configuring Nginx (also 502 error handling);
+- start.sh - bash script for supporting pre-starting commands execution, which can be added in /app/prestart.sh;
+- /app - default basic project for Flask in a uWSGI Nginx Docker container with Python 2.7; 
+- /magenta - current version of git repository of magenta tensorflow project (added into docker image).
 
 ## Building instructions:
 ```

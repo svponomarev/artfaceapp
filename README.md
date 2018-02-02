@@ -36,6 +36,7 @@ $ docker pull svponomarev/tensorflow-serving-devel
 $ docker pull svponomarev/nginx-magenta
 ```
 4. Download model files
+
 Here you can find large files that stored separately (pre-trained age & gender checkpoints converted into .pb format + colorization model):
 
 https://drive.google.com/open?id=1SnluAuiwTjlo4tWL8hFnuUqWQGD-D6FX
@@ -47,7 +48,7 @@ Download them & extract into application directory artFaceApp/app/app
 $ cd artFaceApp
 $ docker-compose up --build
 ```
-5. Test application in browser, default adress is http://0.0.0.0:80/
+6. Test application in browser, default adress is http://0.0.0.0:80/
 
 ## Acknowledgements
 - [ageitgey/face_recognition][4] - face detection & matching algorithm;

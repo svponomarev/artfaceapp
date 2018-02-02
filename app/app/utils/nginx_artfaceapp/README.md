@@ -6,7 +6,7 @@ This directory contains files for building main artfaceapp container with develo
 - requirements.txt - python dependencies to install;
 - entrypoint.sh - bash script for configuring Nginx (also 502 error handling);
 - start.sh - bash script for supporting pre-starting commands execution, which can be added in /app/prestart.sh;
-- /app - default basic project for Flask in a uWSGI Nginx Docker container with Python 2.7; 
+- /app - default basic project for Flask in a uWSGI Nginx Docker container with Python 2.7.
 
 ## Building instructions:
 ```
