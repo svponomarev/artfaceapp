@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% block scripts %}<!-- https://github.com/andreknieriem/simplelightbox -->
+        <script src="{{ url_for('static', filename='js/third-party/simple_lightbox.js') }}"></script>
+        <!-- matching page scripts -->
+        <script src="{{ url_for('static', filename='js/matching.js') }}"></script>
+        <!-- utils scripts -->
+        <script src="{{ url_for('static', filename='js/utils.js') }}"></script>{% endblock %}
+{% block styles %}<!-- https://github.com/andreknieriem/simplelightbox -->
+        <link href="{{ url_for('static', filename='css/third-party/simple_lightbox.css') }}" rel="stylesheet"/>
+        <!-- people page styles -->
+        <link href="{{ url_for('static', filename='css/people.css') }}" rel="stylesheet"/>
+        <!-- detection page styles -->
+        <link href="{{ url_for('static', filename='css/detection.css') }}" rel="stylesheet"/>
+        <!-- matching page styles -->
+        <link href="{{ url_for('static', filename='css/matching.css') }}" rel="stylesheet"/>{% endblock %}
+{% block title %}Step 2: Face matching{% endblock %}
+{% macro formatted_info(info, dist, num) -%}
+<b>{{ info[num].name }}</b> ({{info[num].birth}} - {% if info[num].death %} {{info[num].death}}{% endif %}) {% if info[num].death %}was{% else %}is{% endif %} {{info[num].descr}}<br/><b> Learn more: </b><a href='{{info[num].wiki}}'>wikipedia</a>, <a href='{{info[num].info}}'>{{info[num].source}}</a>.<br/><b> Face distance / Dissimilarity: </b> {{'%0.5f'| format(dist[num]|float)}}{%- endmacro %}
+{% block main %}<div class="container">
+                <div class="container container-table container-title">
+                    <h1 class="step-title">Step 2: Face matching</h1>
+                </div>
+             </div>
+            <div class="container">
+                <div class="container container-table">
+                    <div class="row pedestal-row">
+                        <div class="col-md-3">
+                            <div class="frame">
+                                <div class="image-wrapper image-wrapper--loading">
+                                    <img id="origin" class="img-responsive photothumb image" src="{{img}}">
+                                </div>
+                                <div class="desc"><p>Your image</p></div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row" style="margin: 0px 0px 20px 0px">
+                                <div class="col">
+                                    <div id="top1" class="frame item photo" ratio="{{ratios[1]}}">
+                                        <div class="match-content">
+                                            <div class="match-title"><h3>I Place: {{info[0].decade}}s</h3></div>
+                                                <a href="{{info[0].path}}">
+                                                    <div class="image-wrapper image-wrapper--loading">
+                                                        <img class="img-responsive photothumb image" src="{{info[0].path}}" alt="{{ formatted_info(info, dist, 0) }}" >
+                                                    </div>
+                                                </a>
+                                            <div class="desc"><p>{{info[0].name}}</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pedestal-row">
+                                <div class="col col-md-5">
+                                    <div id="top2" class="frame item photo" ratio="{{ratios[2]}}">
+                                        <div class="match-content">
+                                            <div class="match-title"><h3>II Place: {{info[1].decade}}s</h3></div>
+                                                <a href="{{info[1].path}}">
+                                                    <div class="image-wrapper image-wrapper--loading">
+                                                        <img class="img-responsive photothumb image" src="{{info[1].path}}" alt="{{ formatted_info(info, dist, 1) }}">
+                                                    </div>
+                                                </a>
+                                            <div class="desc"><p>{{info[1].name}}</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-md-2"></div>
+                                <div class="col col-md-5">
+                                    <div id="top3" class="frame item photo" ratio="{{ratios[3]}}">
+                                        <div class="match-content">
+                                            <div class="match-title"><h3>III Place: {{info[2].decade}}s</h3></div>
+                                                <a href="{{info[2].path}}">
+                                                    <div class="image-wrapper image-wrapper--loading">
+                                                        <img class="img-responsive photothumb image" src="{{info[2].path}}" alt="{{ formatted_info(info, dist, 2) }}">
+                                                    </div>
+                                                </a>
+                                            <div class="desc"><p>{{info[2].name}}</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- col-md-9 lower row -->
+                        </div> <!-- col-md-9 -->
+                    </div>  <!-- outer pedestal-row -->
+                </div> <!--  container-table -->
+            </div> <!--  container -->
+            <div class="container footer">
+                <div class="row">
+                    <div id="back-button" class="col-xs-2 col-md-2 nav-sec footer-sec footer-left"><h3>Back</h3></div>
+                    <div class="col-xs-8 col-md-8 footer-sec footer-cntr">
+                        <div class="step-panel"> 
+                            <span>Matching is done! Transform your portrait in style of
+                                <select class="selectpicker" data-style="btn-primary" id="decade-select">
+                                    <option>1910</option>
+                                    <option>1920</option>
+                                    <option>1930</option>
+                                    <option>1940</option>
+                                    <option>1950</option>
+                                    <option>1960</option>
+                                    <option>1970</option>
+                                    <option>1980</option>
+                                    <option>1990</option>
+                                    <option>2000</option>
+                                </select>s
+                            </span>
+                            <form id="transfer-form" action="{{ url_for('stylization') }}" method="POST">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <input type="hidden" id="hidden-path" name="image-path">
+                                <input type="hidden" id="hidden-decade" name="decade" value="{{info[0].decade}}">
+                            </form>
+                        </div>
+                    </div>
+                    <div id="next-button" class="col-xs-2 col-md-2 nav-sec footer-sec footer-right"> <h3>Next</h3></div>
+                    <input type="hidden" id="hidden-ratio" name="ratio" value="{{ratios[0]}}">
+                </div>
+            </div>
+{% endblock %}

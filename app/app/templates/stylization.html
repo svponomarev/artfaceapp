@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block scripts %}<!-- utils scripts -->
+        <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+        <!-- stylization page scripts -->
+        <script src="{{ url_for('static', filename='js/stylization.js') }}"></script>{% endblock %}
+{% block styles %}<!-- detection page styles -->
+        <link href="{{ url_for('static', filename='css/detection.css') }}" rel="stylesheet"/>
+        <!-- stylization page styles -->
+        <link href="{{ url_for('static', filename='css/stylization.css') }}" rel="stylesheet"/>{% endblock %}
+{% block title %}Step 3: Stylization{% endblock %}
+{% block main %}<div class="container" style="width:100vh; min-width:100%;">
+                <div class="container container-table container-title">
+                    <h1 class="step-title">Step 3: Stylization</h1>
+                </div>
+            </div>
+            <div class="container" style="width:100vh; min-width:100%;">
+                <div class="container container-table">
+                    <div class="row main-row">
+                        <div class="col-md-4 col-xs-4">
+                            <div id="art-rect" style="position: relative" class="frame">
+                                <div class="image-wrapper image-wrapper--loading">
+                                    <img id="art-img" class="img-responsive image" src="{{img}}">
+                                </div>
+                                <h2 class="hint-label" id="hint-art">Learn about {{decade}}'s art</h2>
+                                <div class="caption bordered"><h3>Art style</h3></div>
+                            </div>
+                        </div>    
+                        <div class="col-md-4 col-xs-4">
+                            <div id="origin-rect" style="position: relative" class="frame">
+                                <div id="pic1">
+                                    <div id="pic2">
+                                        <img id="origin" class="img-responsive" style="opacity: 0" src="{{img}}">
+                                    </div>
+                                </div> 
+                                <h2 class="hint-label" id="hint-img">Switch to original</h2>
+                                <div class="caption bordered"><h3>Your image</h3></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4">             
+                            <div id="photo-rect" style="position: relative;" class="frame">
+                                <div class="image-wrapper image-wrapper--loading">
+                                    <img id="photo-img" class="img-responsive image" src="{{img}}">
+                                </div>
+                                <h2 class="hint-label" id="hint-photo">Learn about {{decade}}'s photo</h2>
+                                <div class="caption bordered"><h3>Photo style</h3></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container footer">
+                <div class="row">
+                    <div id="back-button" class="col-xs-2 col-md-2 nav-sec footer-sec footer-left"><h3>Back</h3></div>
+                    <div class="col-xs-8 col-md-8 footer-sec footer-cntr">
+                        <div class="step-panel">
+                            <h4> Done! Choose different art style: </h4>
+                            <div class="innerTable">
+                                <div id="StyleFilters">
+                                    <a data-preset="0">Abtract Expressionism #1</a>
+                                    <a data-preset="1">Abtract Expressionism #2</a>
+                                    <a data-preset="2">Abtract Expressionism #3</a>
+                                </div>
+                            </div>
+                            <h4>Try another decade: </h4>
+                            <div class="innerTable">
+                                <div id="DecadeFilters">
+                                    <a data-preset="1910">1910</a>
+                                    <a data-preset="1920">1920</a>
+                                    <a data-preset="1930">1930</a>
+                                    <a data-preset="1940">1940</a>
+                                    <a data-preset="1950">1950</a>
+                                    <a data-preset="1960">1960</a>
+                                    <a data-preset="1970">1970</a>
+                                    <a data-preset="1980">1980</a>
+                                    <a data-preset="1990">1990</a>
+                                    <a data-preset="2000">2000</a>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="cssload-loader">Loading...</div>
+                        <input id="decade" type="hidden" value="{{decade}}">
+                        <input id="orig-img-path" type="hidden" value="{{orig_img}}">
+                    </div>
+                    <div id="next-button" class="col-xs-2 col-md-2 nav-sec footer-sec footer-right"><h3>Start again</h3></div>
+                    <input type="hidden" id="hidden-ratio" name="ratio" value="{{ratio}}">
+                </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>    
+        <!-- CSS section -->
+        <!-- http://getbootstrap.com/ -->
+        <link href="{{ url_for('static', filename='css/third-party/bootstrap.min.css') }}" rel="stylesheet"/>
+        <!-- Global application's CSS -->
+        <link href="{{ url_for('static', filename='css/global_style.css') }}" rel="stylesheet"/>
+        {% block styles %} {% endblock %}
+        <!-- CSS section -->
+        <!-- JS section -->
+        <!-- http://jquery.com/ -->
+        <script src="{{ url_for('static', filename='js/third-party/jquery-latest.min.js') }}"></script>
+        <!-- http://getbootstrap.com/ -->
+        <script src="{{ url_for('static', filename='js/third-party/bootstrap.min.js') }}"></script>
+        {% block scripts %}{% endblock %}  
+        <!-- JS section -->
+        <title>ArtFaceApp: {% block title %}{% endblock %}</title>    
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url_for('index') }}"><span class="green">Art</span><span class="red">Face</span><span class="yellow">App</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="nav navbar-nav">
+                            <li><a id="menu_art" href="{{ url_for('art') }}">Art</a></li>
+                            <li><a id="menu_people" href="{{ url_for('people') }}">People</a></li>
+                            <li><a id="menu_technology" href="{{ url_for('technology') }}">Technology</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a id="menu_about" href="{{ url_for('about') }}">About</a></li>
+                        </ul>
+                </div>
+            </div>
+        </nav>
+        {% if get_flashed_messages() %}
+        <header>
+            <div class="alert alert-info" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+        {% endif %}
+        <main>
+            {% block main %}{% endblock %}          </main>
+    </body>
+</html>

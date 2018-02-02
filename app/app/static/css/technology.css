@@ -1,0 +1,63 @@
+/*
+* === ARTFACEAPP: TECHNOLOGY PAGE STYLESHEET===
+*/
+
+/* allow vertical scrollbar */
+html, body {
+    overflow-y: scroll;
+}
+/* style for content text and images */
+.container {
+    font-size: 18px;
+}
+h1 {
+    font-family: Verdana, serif;
+}
+img {
+    height: 300px;
+    width: auto;
+}
+/* style for accordion panels */
+#accordion .panel-group .panel {
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    border-color: #EEEEEE;
+}
+#accordion .panel-default > .panel-heading {
+    padding: 0;
+    border-radius: 0;
+    outline: none;
+    color: #212121;
+    background-color: #FAFAFA;
+    border-color: #EEEEEE;
+}
+#accordion .panel-default > .panel-heading:hover {
+    background-color: #ddd !important;
+}
+#accordion .panel-title {
+    font-size: 22px; 
+}
+#accordion .panel-title > a {
+    display: block;
+    outline: none;
+    padding: 15px;
+    text-decoration: none;
+}
+.panel-body {
+    text-align: left;
+}
+.more-less {
+    float: right;
+    color: #212121;
+}
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #EEEEEE;
+}
+/* classes for accordion panel titles */
+.panel-selected {
+    background-color: #ddd !important;
+}
+.panel-unselected {
+    background-color: #FAFAFA !important;
+}

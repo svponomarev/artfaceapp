@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Learn more about this project{% endblock %}
+{% block scripts %}<!-- about page scripts -->
+        <script src="{{ url_for('static', filename='js/about.js') }}"></script> {% endblock %}
+{% block styles %}<!-- about page styles -->
+        <link href="{{ url_for('static', filename='css/about.css') }}" rel="stylesheet"/>{% endblock %}
+{% block main %}<div class="container">
+                <div class="row">
+                    <h1>About this project</h1>
+                    <hr/>
+                    <div id="about_content">
+                        <div align=justify>
+                            <p>ArtFaceApp is a <a href="https://docs.cs50.net/2017/x/project.html">final project</a> for CS50 Harvard course <i>"Introduction to Computer Science"</i>.</p>
+                            <p>This project is a web application that allows you to upload a photo of a person's face and learn about the decade of the twentieth century (1910-2000), in which this person would be in fashion, based on the similarities with the famous people of this decade. </p>
+                            <p>This information is used to process the uploaded photo in the style of artists and photographers of that decade. </p>
+                            <p>This project allows you to learn more about the art and photography of the twentieth century and popular people of that time, and also perhaps learn something more about yourself :)</p>
+                            <p> From a technical point of view, the project is interesting because it uses computer vision techniques for face comparison and convolutional neural networks for image style transfer.</p>
+                            <p>Full source code of the project can be found in the open repository, at <a href="https://github.com/svponomarev/artfaceapp">svponomarev/artfaceapp</a>.</p>
+                            <p><b>DISCLAIMER</b>: The choice of famous people of the 20th century is completely subjective (although it is based on researching the tops of the IMDB and the Internet in general), as well as the choice of art movements and photography styles. The choice of art works for style transfer depended on how interesting or good looked the transformed portraits. </p>
+                            <p><b>DISCLAIMER #2</b>: Description of the art movements and chronology may contain inaccuracies and errors, which is caused by the ambitiousness and scale of this project. Lists of famous people, art movements and transfer styles can easily be corrected and expanded in the future. </p>
+                        </div>
+                        <hr/>
+                        <div align=right>
+                            <h3>Contact author</h3>
+                            <hr/>
+                            <p>Svyatoslav Ponomarev</p>
+                            <p>sv.v.ponomarev@gmail.com</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %} 

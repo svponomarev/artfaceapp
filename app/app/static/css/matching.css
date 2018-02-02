@@ -1,0 +1,30 @@
+/*
+* === ARTFACEAPP: MATCHING PAGE STYLESHEET===
+*/
+
+/* style for row with set of images for top-3 matching*/
+.pedestal-row {
+    display: flex;
+    flex: 1 0 50%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+/* style for title with matched person name */
+.match-title {
+    background-color: #607D8B;
+}
+.match-title h3{
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align:center;
+    width: 100%;
+    bottom: 0;
+    left: 0px;
+    padding: 4px 4px;
+    margin: 0;
+    font: 1.5vh Sans-Serif;
+}
+
+

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Learn more about art of XX century{% endblock %}
+{% block scripts %}<!-- art page scripts -->
+        <script src="{{ url_for('static', filename='js/art.js') }}"></script>{% endblock %}
+{% block styles %}<!-- art page styles -->
+        <link href="{{ url_for('static', filename='css/art.css') }}" rel="stylesheet"/>{% endblock %}
+{% block main %}<div class="container">
+                <div class="row">
+                    <div class="gallery col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <h1 class="gallery-title">Form</h1>
+                        <div class="btn-group" data-toggle="buttons" align="center">
+                            <label class="btn btn-default btnradio"><input type="radio" name="form" id="art" value="art" >Art</label>
+                            <label class="btn btn-default btnradio"><input type="radio" name="form" id="photo" value="photo" >Photo</label>
+                        </div>
+                    </div>
+                    <div class="gallery col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <h1 class="gallery-title">Decade</h1>
+                        <div class="btn-group" data-toggle="buttons" align="center">{% for i in range(10) %}
+                            <label class="btn btn-default btnradio"><input type="radio" name="decade" id={{1910 + i*10}} value={{1910 + i*10}}>{{1910 + i*10}}</label>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-12 vertical-center">
+                            <div class="cssload-container">
+                                <div class="cssload-whirlpool"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 art-info-container">
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="decade" value={{decade}}>
+                <input type="hidden" id="form" value={{form}}>
+            </div>
+{% endblock %} 

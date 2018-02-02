@@ -1,0 +1,12 @@
+Flask==0.10.1
+face_recognition
+sqlalchemy
+requests
+pywikibot
+rfc6266
+tensorflow
+grpcio
+grpcio-tools
+scikit-image
+python-aalib
+Naked

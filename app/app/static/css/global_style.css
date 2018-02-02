@@ -1,0 +1,227 @@
+/*
+* === ARTFACEAPP GLOBAL STYLESHEET===
+*/
+
+/* allow map to fill viewport */
+html, body {
+    /* height of these elements */
+    height: 100%;
+
+    /* no margin around these elements */
+    margin: 0;
+
+    /* no padding within these elements */
+    padding: 0;
+
+}
+/* set styles for outer containers */
+main {
+    /* center contents */
+    text-align: center;
+}
+.container {
+    /* center contents */
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+} 
+.container-table {
+    height: 100%;
+    display: table;
+    border-radius: 25px;
+    border: 2px solid #ddd;
+    padding: 10px;
+}
+.bordered {
+    border: 2px solid #ddd;
+}
+/* fix for IE img-responsive */
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+/* set styles for navigation bar*/
+nav .navbar-brand {
+    font-family: 'Abel';
+}
+#navbar a:hover {
+    text-decoration: underline;
+}
+.nav-sec {
+        background: #e8e8e8;
+}
+.blue {
+    color: #537fbe;
+}
+.red {
+    color: #ea433b;
+}
+.yellow {
+    color: #f5b82e;
+}
+.green {
+    color: #2e944b;
+}
+
+/* shift alert panel to the top */
+.alert {
+    margin-top: -19px;
+}
+/* set style for footer with navigation buttons section */
+.footer {
+    margin-top: 10px;
+}
+.footer div {
+    margin: 0;
+}
+.footer-sec {
+    display: table;
+    height: 100px;
+    min-height: 100px;
+    border: 2px solid #ddd;
+    background: #e8e8e8;
+}
+.footer-sec h3 {
+    margin: 0;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-weight: bold;
+}
+.footer-left {
+    border-radius: 25px 0 0 25px;
+    border-right: 0;
+}
+.footer-cntr {
+    background-color: #fff;
+    border-right: 0;
+    border-left: 0;
+}
+.footer-right {
+    border-radius: 0 25px 25px 0;
+    border-left: 0
+}
+
+/* style for centered container with css-loader */
+.vertical-center {
+    position: absolute;
+    left: 50%;
+    top: 30vh;
+    transform: translate(-50%, 0%);
+}
+/* styles for adjusting loader sizes to content */
+.image-wrapper {
+    width: 100%;
+    height: 0;
+    background: white;
+}
+.image {
+    padding: 0;
+    margin: 0;
+}
+.image-wrapper img{
+    width: 100%;
+    -webkit-transition: opacity 1s;
+     -moz-transition: opacity 1s;
+       -o-transition: opacity 1s;
+          transition: opacity 1s;
+    opacity: 1;
+}
+.panel-wrapper div {
+    -webkit-transition: opacity 1s;
+     -moz-transition: opacity 1s;
+       -o-transition: opacity 1s;
+          transition: opacity 1s;
+    opacity: 1;
+}
+.image-wrapper--loading, .panel-wrapper--loading {
+    background: white url(data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQACgAFACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQACgAGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==) center center no-repeat;
+}
+.image-wrapper--loading img, .panel-wrapper--loading div {
+     opacity: 0;
+}
+
+/* style for CSS Loader in form of whirling pool from https://icons8.com/cssload */
+.cssload-container{
+	position:relative;
+    height: 100%;
+}
+.cssload-whirlpool,
+.cssload-whirlpool::before,
+.cssload-whirlpool::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgb(204,204,204);
+    border-left-color: rgb(0,0,0);
+    border-radius: 974px;
+        -o-border-radius: 974px;
+        -ms-border-radius: 974px;
+        -webkit-border-radius: 974px;
+        -moz-border-radius: 974px;
+}
+.cssload-whirlpool {
+    margin: -24px 0 0 -24px;
+    height: 49px;
+    width: 49px;
+    animation: cssload-rotate 1150ms linear infinite;
+        -o-animation: cssload-rotate 1150ms linear infinite;
+        -ms-animation: cssload-rotate 1150ms linear infinite;
+        -webkit-animation: cssload-rotate 1150ms linear infinite;
+        -moz-animation: cssload-rotate 1150ms linear infinite;
+}
+.cssload-whirlpool::before {
+    content: "";
+    margin: -22px 0 0 -22px;
+    height: 43px;
+    width: 43px;
+    animation: cssload-rotate 1150ms linear infinite;
+        -o-animation: cssload-rotate 1150ms linear infinite;
+        -ms-animation: cssload-rotate 1150ms linear infinite;
+        -webkit-animation: cssload-rotate 1150ms linear infinite;
+        -moz-animation: cssload-rotate 1150ms linear infinite;
+}
+.cssload-whirlpool::after {
+    content: "";
+    margin: -28px 0 0 -28px;
+    height: 55px;
+    width: 55px;
+    animation: cssload-rotate 2300ms linear infinite;
+        -o-animation: cssload-rotate 2300ms linear infinite;
+        -ms-animation: cssload-rotate 2300ms linear infinite;
+        -webkit-animation: cssload-rotate 2300ms linear infinite;
+        -moz-animation: cssload-rotate 2300ms linear infinite;
+}
+@keyframes cssload-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cssload-rotate {
+    100% {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes cssload-rotate {
+    100% {
+        -ms-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cssload-rotate {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}

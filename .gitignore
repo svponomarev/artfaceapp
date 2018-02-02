@@ -1,0 +1,3 @@
+app/app/detection/prediction/models/*
+app/app/stylization/colorization/models/colorization_release_v2.caffemodel
+*.pyc

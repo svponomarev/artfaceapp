@@ -1,0 +1,93 @@
+/*
+* === ARTFACEAPP: STYLIZATION PAGE STYLESHEET===
+*/
+
+/* style for all images, show that they clickable */
+img {
+    cursor: pointer;
+}
+/* photo style image can be smaller, so center its content */
+#photo_img {
+    text-align: center;
+}
+/* increase height for step3 footer sections */
+.footer-sec {
+    height: 140px;
+    min-height: 140px;
+}
+/* style for inner sections of footer with selectors of decade and style */
+.step-panel h4 {
+    margin: 0;
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+}
+.innerTable {
+    display: table;
+    width: 100%;
+    margin-bottom: 15px !important;
+}
+/* style for hint labels in the bottom of stylized images */
+.hint-label {
+    position: absolute;
+    text-align:center;
+    width: 100%;
+    bottom: 0;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0.6vh 0;
+    color: white;
+    margin: 0;
+    font: 24px Sans-Serif;
+}
+/* style for links that used as selectors for decade and style */
+#DecadeFilters, #StyleFilters {
+    text-align: center;
+    display:table-cell;
+}
+#DecadeFilters a, #StyleFilters a {
+   -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    -webkit-transition:background-color .3s ease-out;
+    -moz-transition:background-color .3s ease-out;
+    transition:background-color .3s ease-out;
+    background-color:#368ad2;
+    text-align:center;
+    padding:8px 10px;
+    color:#f8f8f2;
+    margin:5px;
+    margin-left: 0;
+    border:none;
+    font-size:13px;
+    width:100px;
+    cursor:pointer;
+    text-decoration:  none;
+}
+#DecadeFilters a:hover, #StyleFilters a:hover {
+    background-color:#4b96d7;
+}
+#DecadeFilters a:active, #StyleFilters a:active {
+    -webkit-box-shadow:inset 1px 1px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow:inset 1px 1px 3px rgba(0,0,0,0.3);
+    box-shadow:inset 1px 1px 3px rgba(0,0,0,0.3);
+}
+#DecadeFilters a.Active, #StyleFilters a.Active{
+    background-color:#e69751;
+}
+
+#pic1, #pic2 {
+ background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+/* style for main row with processed images */
+.main-row {
+    display: flex;
+    align-items: center;
+    flex: 0 1 auto;
+    width:100vh;
+    min-width:100%;
+    margin-left: 0;
+    margin-right: 0;
+}

@@ -1,0 +1,38 @@
+version: "2"
+services:
+  artfaceapp:
+    build: ./
+    volumes:
+      - ./app:/app
+    ports:
+      - "80:80"
+    #command: python app/main.py # uncomment for debug mode
+    networks:
+        artfacenet:
+            ipv4_address: 172.18.0.11
+  tf_prediction:
+    image: svponomarev/tensorflow-serving-devel
+    volumes:
+         - ./app/app/detection/prediction/models:/models
+    command:
+      - /bin/bash
+      - -c
+      - |
+         /~/serving/bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server --port=9000 --model_config_file=/models/model_config.txt
+    networks:
+        artfacenet:
+            ipv4_address: 172.18.0.12
+  magenta_stylization:
+    build: ./magenta_app/
+    ports:
+         - "6006:6006"
+    networks:
+        artfacenet:
+            ipv4_address: 172.18.0.13
+networks:
+  artfacenet:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.18.0.0/24
+                  gateway: 172.18.0.1

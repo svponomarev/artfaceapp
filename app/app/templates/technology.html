@@ -1,0 +1,198 @@
+{% extends "layout.html" %}
+{% block title %}How does it all work?{% endblock %}
+{% block scripts %}<!-- technology page scripts -->
+        <script src="{{ url_for('static', filename='js/technology.js') }}"></script>{% endblock %}
+{% block styles %}<!-- technology page styles -->
+        <link href="{{ url_for('static', filename='css/technology.css') }}" rel="stylesheet"/>{% endblock %}
+{% block main %}<div class="container">
+                <div class="row">
+                    <h1>How does it all work?</h1>
+                    <p align=center>Full source code is available at <a href="https://github.com/svponomarev/artfaceapp">svponomarev/artfaceapp</a></p>
+                    <hr/>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Stack of technologies
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <p><b>Client side</b>: <i>jQuery</i> + <i>Bootstrap</i></p>
+                                    <p style="margin: 0"><b>Server side</b>: <i>uWSGI + Nginx + Flask</i> (development server) + <i>face_recognition</i> (face detection & matching) + <i>TensorFlow</i> (age & gender prediction) + <i>Caffe</i> (colorization) + <i>colorcorrect</i> (automatic image equalization) + <i>ImageMagick</i> & <i>Node.js</i> (photo style transfer) + <i>Magenta</i> (art style transfer)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Working schema
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <div align=center>
+                                        <p><b><u>Separate Docker containers interaction system</u></b></p>
+                                        <img src="app/static/images/info/technical_0.jpg" style="height: 500px">
+                                    </div>
+                                    <p><b>Main Container</b> (artfaceapp): Development Server (<i>uWSGI</i> + <i>Nginx</i> + <i>Flask</i>) </p>
+                                    <p><b>Support Container #1</b> (tf_prediction): Age & Gender Prediction (<i>TensorFlow Serving</i>)</p>
+                                    <p><b>Support Container #2</b> (magenta_stylization): Art Style Transfer (<i>uWSGI</i> + <i>Nginx</i> + <i>Flask</i> + <i>Magenta</i>) </p>
+                                    <hr/>
+                                    <p style="margin: 0"><b>Learn more</b>: <i>V. Bezgachev, How to deploy Machine Learning models with TensorFlow, 2017</i>, <a href="https://towardsdatascience.com/how-to-deploy-machine-learning-models-with-tensorflow-part-1-make-your-model-ready-for-serving-776a14ec3198">full article</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Face detection & matching
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <div align=center>
+                                       <p><b>ageitgey/face_recognition</b> (<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a>) - the world's simplest facial recognition api for Python</p>
+                                       <img src="app/static/images/info/technical_1.jpg">
+                                       <p><b>Step 1</b>. Face detection using learned HOG (Histogram of Oriented Gradients) pattern.</p>
+                                        <br/>
+                                       <img src="app/static/images/info/technical_2.jpg">
+                                       <p><b>Step 2</b>. 68 face landmark position estimation.</p>
+                                        <br/>
+                                       <img src="app/static/images/info/technical_3.jpg">
+                                       <p><b>Step 3</b>. Posing and projecting centered face.</p>
+                                        <br/> 
+                                        <img src="app/static/images/info/technical_4.jpg">
+                                       <p><b>Step 4</b>. Using pre-trained convolutional neural network to output face embeddings, which are used for matching.</p> 
+                                    </div>
+                                    <hr/>
+                                    <p style="margin: 0"><b>Learn more</b>: <i>A. Geitgey, Modern Face Recognition with Deep Learning, 2016</i>, <a href="https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78">full article</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Age & gender prediction
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    <div align=center>
+                                       <p><b>dpressel/rude-carnie</b> (<a href="https://github.com/dpressel/rude-carnie">https://github.com/dpressel/rude-carnie</a>) - age and gender deep learning with TensorFlow</p>
+                                        <img src="app/static/images/info/technical_5.jpg">
+                                        <p>Convolutional Neural Network architecture for age and gender prediction</p>
+                                    </div>
+                                    <hr/>
+                                    <p style="margin: 0"><b>Learn more</b>: <i>G. Levi, T. Hassner, Age and Gender Classification Using Convolutional Neural Networks, IEEE Workshop on Analysis and Modeling of Faces and Gestures (AMFG), at the IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2015,</i> <a href="https://www.openu.ac.il/home/hassner/projects/cnn_agegender/CNN_AgeGenderEstimation.pdf">full article</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingFive">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Image equalization
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    <div align=center>
+                                       <p><b>shunsukeaihara/colorcorrect</b> (<a href="https://github.com/shunsukeaihara/colorcorrect">https://github.com/shunsukeaihara/colorcorrect</a>) - automatic color equalization</p>
+                                        <img src="app/static/images/info/technical_6.jpg">
+                                        <p>Basic algorithm structure for automatic color equalization</p>
+                                    </div>
+                                    <hr/>
+                                    <p style="margin: 0"><b>Learn more</b>: <i>A. Rizzi, C. Gatta, D. Marini, A New Algorithm for Unsupervised Global and Local Color Correction, Pattern Recognition Letters, V. 24, No. 11, 2003,</i> <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.108.8722&rep=rep1&type=pdf">full article</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingSix">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Image Colorization
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                                <div class="panel-body">
+                                    <div align=center>
+                                       <p><b>richzhang/colorization</b> (<a href="https://github.com/richzhang/colorization">https://github.com/richzhang/colorization</a>) - colorful image colorization</p>
+                                       <img src="app/static/images/info/technical_7.jpg">
+                                       <p>Convolutional Neural Network architecture for image colorization</p>
+                                    </div>
+                                    <hr/>
+                                    <p style="margin: 0"><b>Learn more</b>: <i>Zhang, Isola, Efros, Colorful Image Colorization. In ECCV, 2016,</i> <a href="https://arxiv.org/pdf/1603.08511.pdf">full article</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingSeven">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Photo style transfer
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                                <div class="panel-body" align=left>
+                                    <p align=center><u><b>Applying filters for photography style transfer</b></u></p>
+                                    <div align=center><img src="app/static/images/info/technical_8.jpg"></div>
+                                    <p><b>acoomans/instagram-filters</b> (<a href="https://github.com/acoomans/instagram-filters">https://github.com/acoomans/instagram-filters</a>) - instagram-like image filters on Python;</p>
+                                    <p><b>Fred's ImageMagick Scripts: Dave Hill Effect</b> - <a href="http://www.fmwconcepts.com/imagemagick/davehilleffect/index.php">http://www.fmwconcepts.com/imagemagick/davehilleffect/index.php</a>;</p>
+                                    <p><b>vigetlabs/canvas-instagram-filters</b> (<a href="https://github.com/vigetlabs/canvas-instagram-filters">https://github.com/vigetlabs/canvas-instagram-filters</a>) - instagram-style filters in HTML5 Canvas;</p>
+                                    <p><b>phoboslab/WebGLImageFilter</b> (<a href="https://github.com/phoboslab/WebGLImageFilter">https://github.com/phoboslab/WebGLImageFilter</a>) - fast image filters for browsers with WebGL support; </p>
+                                    <p><b>CamanJS</b> (<a href="http://camanjs.com/">camanjs.com</a>) - JavaScript image manipulation;</p>
+                                    <p><b>EaselJS</b> (<a href="https://www.createjs.com/easeljs">https://www.createjs.com/easeljs</a>) - library for building high-performance interactive 2D content in HTML5;</p>
+                                    <p>All JavaScript canvas image rendering is computed on server side with <b>Node.js</b>.</p>
+                                    <hr/>
+                                    <p><b>Learn more</b>: <i>Create Instagram Filters With PHP</i>, <a href="https://code.tutsplus.com/tutorials/create-instagram-filters-with-php--net-24504">full article</a>; <i>Instagram-style filters in HTML5 Canvas</i>, <a href="https://www.viget.com/articles/instagram-style-filters-in-html5-canvas">full article</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-unselected" role="tab" id="headingEight">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Art style transfer
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                                <div class="panel-body">
+                                    <div align=center>
+                                        <p><b><u>Using convolutional neural networks and other techniques for art style transfer</u></b></p>
+                                    </div>
+                                    <p><b>tensorflow/magenta</b> (<a href="https://github.com/tensorflow/magenta/tree/master/magenta/models/arbitrary_image_stylization">magenta/models/arbitrary_image_stylization</a>) - Fast Style Transfer for Arbitrary Styles;</p>
+                                    <div align=center>
+                                        <img src="app/static/images/info/technical_9.jpg">
+                                        <p>Diagram  of  model  architecture.   The  style  prediction  network P predicts  an  embedding  vector S from an input style image,  which supplies a set of normalization constants for the style transfer network. The style transfer network transforms the photograph into a stylized representation. </p></div>
+                                        <p><b>MotionDesignStudio/ascii_movie_image</b> (<a href="https://gist.github.com/motiondesignstudio/9374326">https://gist.github.com/motiondesignstudio/9374326</a>) - Python ASCII Video And ASCII Image Creator;</p>
+                                        <p><b>mosesschwartz/warhol_effect</b> (<a href="https://github.com/mosesschwartz/warhol_effect">https://github.com/mosesschwartz/warhol_effect</a>) - Pop-Art Warhol Effect.</p>
+                                        <hr/>
+                                        <p style="margin: 0"><b>Learn more</b>: <i> G. Ghiasi, H. Lee, M. Kudlur, V. Dumoulin, J. Shlens, Exploring the structure of a real-time, arbitrary neural artistic stylization network, Proceedings of the British Machine Vision Conference (BMVC), 2017</i>, <a href="https://arxiv.org/pdf/1705.06830.pdf">full article</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- panel-group -->
+                    </div>
+                </div>
+{% endblock %} 

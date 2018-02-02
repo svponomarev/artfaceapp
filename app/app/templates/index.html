@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% block title %}Face the art of XX century{% endblock %}
+{% block scripts %}<!-- https://github.com/egonolieux/bootstrap-imageupload -->
+        <script src="{{ url_for('static', filename='js/third-party/bootstrap_imageupload.js') }}"></script>
+        <!-- https://github.com/andreknieriem/simplelightbox -->
+        <script src="{{ url_for('static', filename='js/third-party/simple_lightbox.js') }}"></script>
+        <!-- index page scripts -->
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>{% endblock %}
+{% block styles %}<!-- https://github.com/egonolieux/bootstrap-imageupload -->
+        <link href="{{ url_for('static', filename='css/third-party/bootstrap_imageupload.css') }}" rel="stylesheet"/>
+        <!-- https://github.com/andreknieriem/simplelightbox -->
+        <link href="{{ url_for('static', filename='css/third-party/simple_lightbox.css') }}" rel="stylesheet"/>
+         <!-- index page styles -->
+        <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet"/>{% endblock %} 
+{% block main %}<div class="container">
+                    <div class="container container-table" style="margin-bottom: 10px">          
+                        <h1 class="main-title">Welcome to <span class="green">Art</span><span class="red">Face</span><span class="yellow">App</span></h1> 
+                    </div>
+            </div>
+            <div class="container">
+                <div class="container container-table">
+                    <div class="row features-row"> 
+                        <div>
+                            <ul>
+                                <li>Predict your age and gender by your photo;</li>
+                                <li>Find similar to you <a href="/people">famous people of XX century</a> based on your facial features;</li>
+                                <li>Determine to what decade does your face type belong;</li>
+                                <li>Transform your portrait according to <a href="/art">art and photo style</a> of selected decade.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row options-row">
+                        <div class="col-md-5 col-xs-5 centered-cell bordered" style="padding:5px">
+                            Choose one of this images
+                            <div class="row choice-row">
+                                <div class="col-md-4 col-xs-4"><figure><img class="img-responsive" src="app/static/images/1910s.jpg"> </figure></div>
+                                <div class="col-md-4 col-xs-4"><figure><img class="img-responsive" src="app/static/images/1940s.jpg"> </figure> </div>
+                                <div class="col-md-4 col-xs-4"> <figure><img class="img-responsive" src="app/static/images/1960s.jpg"> </figure> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-xs-1 centered-cell">
+                            <span style="font-size: 26px"><b>OR</b></span>
+                         </div>
+                        <div class="col-md-5 col-xs-5 centered-cell bordered" style="padding:5px">
+                            <div class="upload-holder">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Upload your image</button>
+                           </div> 
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class= "container footer">
+                <div class="row">
+                    <div id="back-button" class="col-xs-2 col-md-2 footer-sec footer-left"></div>
+                    <div class="col-xs-8 col-md-8 info-panel footer-sec footer-cntr">
+                        <form id="chosen-form" action="{{ url_for('upload') }}" method="POST" style="display: none">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <input type="hidden" name="image-path">
+                        </form>      
+                    </div>
+                    <div id="next-button" class="col-xs-2 col-md-2 nav-sec footer-sec footer-right"> <h3> Next </h3></div>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">Upload image</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="imageupload panel panel-default">
+                                <div class="panel-heading clearfix">
+                                    <h3 class="panel-title pull-left">Choose your source:</h3>
+                                        <div class="btn-group pull-right">
+                                            <button type="button" class="btn btn-default active">File</button>
+                                            <button type="button" class="btn btn-default">URL</button>
+                                        </div>
+                                </div>
+                                <div class="file-tab panel-body">
+                                    <form action="{{ url_for('upload') }}" method="POST" enctype = "multipart/form-data">
+                                        <label class="btn btn-default btn-file">
+                                            <!-- The file is stored here. -->
+                                            <span>Browse...</span>
+                                            <input type="file" name="file">
+                                        </label>
+                                        <button type="button" class="btn btn-default">Remove</button>
+                                       <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                                <div class="url-tab panel-body">
+                                    <form id="url_sender" action="{{ url_for('upload') }}" method="POST">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control hasclear" placeholder="Image URL">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default">Upload</button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-default">Remove</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <!-- The URL is stored here. -->
+                                        <input type="hidden" name="image-url">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

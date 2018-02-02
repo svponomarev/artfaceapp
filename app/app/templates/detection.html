@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+{% block scripts %}<!-- detection page scripts -->
+        <script src="{{ url_for('static', filename='js/detection.js') }}"></script>
+        <!-- utils scripts -->
+        <script src="{{ url_for('static', filename='js/utils.js') }}"></script> {% endblock %}
+{% block styles %}<!-- detection page styles -->
+        <link href="{{ url_for('static', filename='css/detection.css') }}" rel="stylesheet"/>{% endblock %}
+{% block title %}Step 1: Face detection{% endblock %}
+{% block main %}<div class="container">
+                <div class="container container-table container-title">
+                    <h1 class="step-title">Step 1: Face parameters estimation</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container container-table">
+                    <div class="row main-row">
+                        <div class="col-md-3 origin-col">
+                            <div class="frame" id ="origin-rect">
+                                <div class="image-wrapper image-wrapper--loading">
+                                    <img id="origin" class="img-responsive image" src="{{img}}">
+                                </div>
+                                <div class="caption bordered">
+                                    <h3>Your image</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="frame" id="area-rect">
+                                <div class="image-wrapper image-wrapper--loading">
+                                    <img id="img-area" class="img-responsive image" src="{{img_rect}}">
+                                </div>
+                                <div class="caption bordered">
+                                    <h3>Face area</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="frame" id="mask-rect">
+                                <div class="image-wrapper image-wrapper--loading">
+                                    <img id="img-mask" class="img-responsive image" src="{{img_mask}}">
+                                </div>
+                                <div class="caption bordered">
+                                    <h3>Face mask</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 prediction-col">
+                            <div class="row upper-prediction">
+                                <div class="frame" id="gender-rect">
+                                    <div class="row prediction-values">
+                                        <div class="panel-wrapper panel-wrapper--loading" id="gender-info">
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="label-container">
+                                                    <div id="gender-label"></div>
+                                                </div> 
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="prob-container">
+                                                    <div id="gender-prob"></div>
+                                                </div> 
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="row prediction-labels">
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="bordered param-title">
+                                                <div class="labels"><h4>GENDER</h4></div>
+                                            </div>                       
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="bordered cert-title">
+                                                <div class="labels"><h4>CERTAINTY</h4></div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div> <!-- gender-rect -->
+                            </div> <!-- upper row in estimation-col -->
+                            <div class="row lower-prediction">
+                                <div class="frame" id = "age-rect">
+                                    <div class="row prediction-values">
+                                        <div class="panel-wrapper panel-wrapper--loading" id="age-info">
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="label-container">
+                                                    <div id="age-label"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="prob-container">
+                                                    <div id="age-prob"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- prediction-values row in age-rect --> 
+                                    <div class="row prediction-labels">
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="bordered param-title">
+                                                <div class="labels"><h4>AGE</h4></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="bordered cert-title">
+                                                <div class="labels"><h4>CERTAINTY</h4></div>
+                                            </div>
+                                        </div>  
+                                    </div> <!-- prediction-labels row in age-rect -->
+                                </div> <!-- age-rect -->
+                            </div> <!-- lower row in estimation-col -->
+                        </div> <!-- estimation-col -->
+                    </div> <!-- pedestal-row -->
+                </div> <!-- container-table -->
+            </div> <!-- container -->
+            <div class= "container footer">
+                <div class="row">
+                    <div id="back-button" class="col-xs-2 col-md-2 nav-sec footer-sec footer-left"><h3>Back</h3></div>
+                    <div class="col-xs-8 col-md-8 footer-sec footer-cntr">
+                        <div class="cssload-loader">Loading...</div>
+                        <div class="step-panel">
+                            <span>Estimation is done! Search for matches in 
+                                <select class="selectpicker" data-style="btn-primary" id="gender-select">
+                                    <option>male</option>
+                                    <option>female</option>
+                                    <option>all</option>
+                                </select> faces
+                            </span>
+                            <form id="match-form" action="{{ url_for('matching') }}" method="POST">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <input type="hidden" id="hidden-path" name="image-path">
+                                <input type="hidden" id="hidden-gender" name="gender">
+                            </form>
+                        </div> <!-- step-panel -->
+                    </div> <!-- footer-cntr -->
+                    <div id="next-button" class="col-xs-2 col-md-2 nav-sec footer-sec footer-right"> <h3>Next</h3></div>
+                    <input type="hidden" id="hidden-ratio" name="ratio" value="{{ratio}}">
+                </div> <!-- row -->
+            </div> <!-- container -->
+{% endblock %}

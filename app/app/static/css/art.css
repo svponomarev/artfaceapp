@@ -1,0 +1,81 @@
+/*
+* === ARTFACEAPP: ART PAGE STYLESHEET===
+*/
+
+/* allow vertical scrollbar */
+html, body {
+    overflow-y: scroll;
+}
+/* style of main container with articles */
+.art-info-container {
+ text-align: justify;
+}
+.art-info-container p {
+  text-indent: 3%;
+}
+.art-info-container img {
+ height: 300px; width: auto;
+}
+.art-info-container .small-img {
+ height: 200px; width: auto;
+}
+.art-info-container h3 {
+ padding: 0; margin: 0; text-align: center;
+}
+.art-info-container hr {
+ margin-top: 5px; margin-bottom: 10px;
+}
+.art-info-container br {
+ margin-bottom: 10px;
+}
+/* styles for image alignment in text with bootstrap */
+/* see https://www.drupal.org/project/social/issues/2890462 */
+/* ----------------------------------------------
+   CSS Alignment Classes used by CKEditor plugins 
+   missing from OpenSocial Base and Blue Themes 
+   ---------------------------------------------- */
+.align-right {
+/* copied from bootstrap .pull-right 
+   http://getbootstrap.com/css/#helper-classes-floats */
+        float: right;
+}
+.align-left {
+/* copied from bootstrap .pull-left 
+   http://getbootstrap.com/css/#helper-classes-floats */
+        float: left;
+}
+.align-center {
+/* copied from bootstrap .center-block
+http://getbootstrap.com/css/#helper-classes-center
+*/
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+}
+/* ----------------------------------------------
+   Alignment of Inline Images and limiting caption
+   captions to the width of their images 
+   ---------------------------------------------- */
+figure.align-left { 
+        margin: 0px 15px 0px 0px;
+        padding: 0px;
+        display: table;
+}
+figure.align-right {
+        margin: 0px 0px 0px 15px;
+        padding: 0px;
+        display: table;
+}
+figure.align-center { 
+        padding: 10px;
+        display: table;
+}
+figure.align-right figcaption,
+figure.align-left figcaption,
+figure.align-center figcaption { 
+        font-size: small;
+        text-align: center;
+        display: table-caption;
+        caption-side: bottom ;
+        margin-bottom: 5px;
+}

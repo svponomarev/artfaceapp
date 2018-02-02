@@ -1,0 +1,108 @@
+/*
+* === ARTFACEAPP: PEOPLE PAGE STYLESHEET===
+*/
+
+/* allow vertical scrollbar */
+html, body {
+    overflow-y: scroll;
+}
+/* style for masonry grid */
+.grid {
+    margin: 0 auto;
+}
+.grid-item {
+    width: calc(25% - 10px);
+}
+/* style for separate frame with person portrait */
+.item {
+    position: relative;
+    background-color: #fff;
+}
+.photothumb {
+    width: 100%;
+    height: auto;
+}
+/* style for hover animation with CSS3 for person portrait */
+.item {
+  -webkit-transition: -webkit-transform .15s ease;
+  -moz-transition: -moz-transform .15s ease;
+  -o-transition: -o-transform .15s ease;
+  -ms-transition: -ms-transform .15s ease;
+  transition: transform .15s ease;
+}
+.item:hover {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  z-index: 5;
+}
+/* style for title with person name */
+.title {
+    padding: 18px;
+    background-color: #607D8B;
+ }
+.title h3 {
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align:center;
+    width: 100%;
+    bottom: 0;
+    left: 0px;
+    padding: 4px 4px;
+    margin: 0;
+    font: 18px Sans-Serif;
+}
+/* style for lower section with portrait label */
+.desc img{
+  width: 50%;
+  margin: 0 10px 10px 0;
+  float: left;
+}
+.desc p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.3vh;
+  /*Font*/
+  font-family: Georgia, serif;
+  font-weight: bold;
+  color: #000;
+}
+/* style for blockquote about person */
+blockquote{
+  display:block;
+  background: #fff;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #666;
+  text-align: justify;
+  /*Box Shadow - (Optional)*/
+  -moz-box-shadow: 2px 2px 15px #ccc;
+  -webkit-box-shadow: 2px 2px 15px #ccc;
+  box-shadow: 2px 2px 15px #ccc;
+}
+blockquote::before{
+  content: "\201C"; /*Unicode for Left Double Quote*/ 
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+  /*Positioning*/
+  position: absolute;
+  left: 10px;
+  top:5px;
+}
+blockquote::after{
+  /*Reset to make sure*/
+  content: "";
+}
+blockquote em{
+  font-style: italic;
+}

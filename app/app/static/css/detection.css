@@ -1,0 +1,310 @@
+/*
+* === ARTFACEAPP: DETECTION PAGE STYLESHEET===
+*/
+
+/* style for container with current step title */
+.container-title {
+    margin-bottom: 10px;
+}
+/* style for header with current step title */
+.step-title {
+    font-family: helvetica, arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size:36px;
+}
+/* style for main row with processed images */
+.main-row {
+    margin-left: 0;
+    margin-right: -15px;
+}
+/* style for upper row with predictions about gender */
+.upper-prediction {
+    height: 47%;
+    width: 100%;
+}
+/* style for lower row with predictions about age */
+.lower-prediction {
+    height: 47%;
+    width: 100%;
+    margin-top: 8%;
+}
+/* style for row with predicted values */
+.prediction-values {
+    margin: 0;
+    height: 80%;
+    width: 100%;
+}
+/* style for row with captions about predicted parameters */
+.prediction-labels {
+    margin: 0;
+    height: 20%;
+    width: 100%;
+}
+/* style for outer div with predicted parameter (age, gender) and certainty */
+#gender-info, #age-info {
+    height: 100%;
+}
+/* style for each column in mentioned above outer divs */
+.col-md-6, .col-xs-6 {
+    margin: 0;
+    padding: 0;
+    height:100%;
+}
+/* style for containers with predicted parameters */
+.label-container {
+    height: 100%;
+    border: 0;
+    display: flex;
+    align-items: center;
+}
+/* style for div with predicted gender (size of image) */
+#gender-label {
+    height: 80%;
+    width: 100%;
+}
+/* style for div with predicted age (position of number) */
+#age-label {
+    width: 100%;
+    display: table;
+}
+/* style for containers with certainty about predictions */
+.prob-container {
+    height: 100%;
+    border-left: 2px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0,0,0.75);
+}
+/* style for divs with estimated certainty */
+#gender-prob, #age-prob {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+/* style for div with text names of predicted parameters (AGE, GENDER) */
+.param-title {
+    height: 100%;
+    border-right: 0;
+    border-left: 0;
+}
+/* style for div with text CERTAINTY */
+.cert-title {
+    height: 100%;
+    border-left: 0;
+    background: #e8e8e8;
+}
+/* style for images with gender icon */
+.gender-icon {
+    height: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* style for captions with name of parameters, including certainty */
+.labels {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+.labels h4{
+    margin: 0;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-family: Georgia;
+    font-size: 14px;
+}
+@media screen and (min-height: 800px) {
+    .labels h4 {
+     font-size: 18px;
+    }
+}
+@media screen and (min-height: 200px) {
+    .labels h4 {
+     font-size: 14px;
+    }
+}
+/* style for headers with predicted age (colored to black in jQuery) & estimated certainty of prediction */
+.frame h1 {
+    margin: 0;
+    color: white;
+    height: 100%;
+    text-align: center;
+    font: 3rem helvetica, arial, sans-serif;
+    display:table-cell;
+    vertical-align:middle;
+}
+/* style for frame with person's portrait */
+.frame
+{
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* style for caption in frame */
+.caption
+{
+    padding: 5px; 
+}
+.caption h3 {
+    text-align:center;
+    width: 100%;
+    bottom: 0;
+    left: 0px;
+    margin: 0;
+    /*Font*/
+    color: black;
+    font-family: Georgia, serif;
+    font-weight: bold;
+}
+/* style for central panel with loader and parameters for the next step */
+.step-panel {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-family: Georgia;
+    background: #fff;
+}
+.step-panel span {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size:18px;
+}
+/* hide form with chosen gender that will be send through POST request */
+.step-panel form {
+    display: none;
+}
+.selectpicker {
+    cursor: pointer;
+}
+/* style for CSS Loader in lower central panel in form of text animation from https://icons8.com/cssload */
+.cssload-loader {
+    width: 244px;
+    height: 49px;
+    line-height: 49px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    font-family: Georgia, arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size:18px;
+    color: rgb(0,0,0);
+    letter-spacing: 0.2em;
+}
+.cssload-loader::before, .cssload-loader::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: rgb(40,96,144);
+    position: absolute;
+    animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -o-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -ms-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -webkit-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -moz-animation: cssload-load 0.81s infinite alternate ease-in-out;
+}
+.cssload-loader::before {
+    top: 0px;
+}
+.cssload-loader::after {
+    bottom: 0px;
+}
+
+@keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-o-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-ms-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-webkit-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}
+
+@-moz-keyframes cssload-load {
+    0% {
+        left: 0;
+        height: 29px;
+        width: 15px;
+    }
+    50% {
+        height: 8px;
+        width: 39px;
+    }
+    100% {
+        left: 229px;
+        height: 29px;
+        width: 15px;
+    }
+}

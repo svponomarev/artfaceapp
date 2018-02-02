@@ -1,0 +1,83 @@
+/*
+* === ARTFACEAPP: INDEX PAGE STYLESHEET===
+*/
+
+/* modal style section */
+.modal {
+  text-align: center;
+}
+.modal-dialog {
+  display: inline-block;
+  vertical-align: middle;
+}
+.upload-holder {
+    float: middle;
+}
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+/* main window section */
+.main-title {
+    font-family: Verdana;
+    font-weight: 500;
+    font-size:36px;
+} 
+.centered-cell {
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+    padding:0;
+}
+.features-row {
+    font-family: Georgia;
+    font-weight: 400;
+    font-size:22px;
+    margin-bottom: 25px;
+    margin-left: 0px;
+}
+.features-row div, ul {
+    margin: 0;
+    text-align: left;
+}
+/* image uploading section */
+.options-row {
+    display: table;
+    font-family: Georgia;
+    font-weight: 400;
+    font-size:22px;
+    margin-bottom: 5px;
+}
+.choice-row {
+    height:100%;
+    display: table;
+    margin: 0;
+}
+.choice-row div {
+    margin:0;
+    padding:2px;
+    float: none;
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    width: auto;
+}
+.choice-row figure {
+	padding: 5px;
+    cursor: pointer;
+}
+.img-selected {
+    transition: .25s ease;
+}
+.img-selected:hover {
+    box-shadow: 0 0 0 7px #537fbe;
+    transition: .25s ease;
+}
+.img-chosen {
+    box-shadow: 0 0 0 7px #2e944b;
+    transition: .25s ease;
+}

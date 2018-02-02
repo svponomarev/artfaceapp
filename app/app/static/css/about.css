@@ -1,0 +1,16 @@
+/*
+* === ARTFACEAPP: ABOUT PAGE STYLESHEET===
+*/
+
+/* allow vertical scrollbar */
+html, body {
+    overflow-y: scroll;
+}
+/* style of about text */
+.container .row {
+    font-size: 18px;
+    text-indent: 3%;
+}
+h1 {
+    font-family: Verdana, serif;
+}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}Learn more about people of XX century{% endblock %}
+{% block scripts %}<!-- https://github.com/desandro/imagesloaded -->
+        <script src="{{ url_for('static', filename='js/third-party/imagesloaded.pkgd.js') }}"></script>
+        <!-- https://masonry.desandro.com/ -->
+        <script src="{{ url_for('static', filename='js/third-party/masonry.pkgd.min.js') }}"></script>
+        <!-- https://github.com/andreknieriem/simplelightbox -->
+        <script src="{{ url_for('static', filename='js/third-party/simple_lightbox.js') }}"></script>
+        <!-- people page scripts -->
+        <script src="{{ url_for('static', filename='js/people.js') }}"></script>{% endblock %}
+{% block styles %}<!-- https://github.com/andreknieriem/simplelightbox -->
+        <link href="{{ url_for('static', filename='css/third-party/simple_lightbox.css') }}" rel="stylesheet"/>
+        <!-- people page styles -->
+        <link href="{{ url_for('static', filename='css/people.css') }}" rel="stylesheet"/>{% endblock %}
+{% block main %}<div class="container">
+                <div class="row">
+                    <div class="gallery col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <h1 class="gallery-title">Gender</h1>
+                        <div class="btn-group" data-toggle="buttons" align="center">
+                            <label class="btn btn-default btnradio"><input type="radio" name="gender" id="female" value="female">Female</label>
+                            <label class="btn btn-default btnradio"><input type="radio" name="gender" id="male" value="male">Male</label>
+                        </div>
+                    </div>
+                    <div class="gallery col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <h1 class="gallery-title">Decade</h1>
+                        <div class="btn-group" data-toggle="buttons" align="center">{% for i in range(10) %}    
+                            <label class="btn btn-default btnradio"><input type="radio" name="decade" id={{1910 + i*10}} value={{1910 + i*10}}>{{1910 + i*10}}</label>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row" style="margin: 0; margin-left: 35px; padding: 0">
+                    <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="grid"> </div>
+                    </div>
+                    <div class="vertical-center" style="top: 50vh">
+                        <div class="cssload-container">
+                            <div class="cssload-whirlpool"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %} 
