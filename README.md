@@ -63,7 +63,7 @@ $ docker-compose up --build
 - [MotionDesignStudio/ascii_movie_image][13] - Python ASCII Video And ASCII Image Creator;
 - [mosesschwartz/warhol_effect][14] - Pop-Art Warhol Effect;
 - [tiangolo/uwsgi-nginx-flask-docker][15] - examples for  uWSGI and Nginx for Flask applications in Python running in a single container;
-- [How to deploy Machine Learning models with TensorFlow][16], V. Bezgachev, 2017 - mantaining tensorflow service for age and gender prediction;
+- [How to deploy Machine Learning models with TensorFlow][16], V. Bezgachev, 2017 - mantaining tensorflow service for age and gender prediction.
 
 
 ## Authors
