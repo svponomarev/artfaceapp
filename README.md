@@ -10,9 +10,18 @@ Working ArtFaceApp server currently can be accessed at [artfaceapp.fvds.ru][2]
 
 Build Docker images can be found at [Docker Hub][3].
 
+Short video with project presentation:
+
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/4vy3_GMFEiE/0.jpg)](http://www.youtube.com/watch?v=4vy3_GMFEiE "ArtFaceApp")
+
 ## Usage
 
-1. Install docker
+1. Download source code
+```
+$ git clone https://github.com/svponomarev/artfaceapp.git
+```
+
+2. Install docker
 
 For Ubuntu 16.04:
 ```
@@ -24,18 +33,18 @@ $ sudo apt-get update
 $ sudo apt-get install docker-ce
 ```
 
-2. Install docker-compose
+3. Install docker-compose
 ```
 $ sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 $ sudo chmod +x /usr/local/bin/docker-compose
 ```
-3. Download docker images for this project
+4. Download docker images for this project
 ```
 $ docker pull svponomarev/nginx-artfaceapp
 $ docker pull svponomarev/tensorflow-serving-devel
 $ docker pull svponomarev/nginx-magenta
 ```
-4. Download model files
+5. Download model files
 
 Here you can find large files that stored separately (pre-trained age & gender checkpoints converted into .pb format + colorization model):
 
@@ -43,12 +52,12 @@ https://drive.google.com/open?id=1SnluAuiwTjlo4tWL8hFnuUqWQGD-D6FX
 
 Download them & extract into application directory artFaceApp/app/app
 
-5. Launch docker containers with docker-compose
+6. Launch docker containers with docker-compose
 ```
 $ cd artFaceApp
 $ docker-compose up --build
 ```
-6. Test application in browser, default adress is http://0.0.0.0:80/
+7. Test application in browser, default adress is http://0.0.0.0:80/
 
 ## Acknowledgements
 - [ageitgey/face_recognition][4] - face detection & matching algorithm;
