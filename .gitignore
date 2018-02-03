@@ -1,3 +1,4 @@
 app/app/detection/prediction/models/*
+app/app/static/uploads/*
 app/app/stylization/colorization/models/colorization_release_v2.caffemodel
 *.pyc

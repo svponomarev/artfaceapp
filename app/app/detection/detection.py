@@ -20,7 +20,7 @@ def detect_faces(img_path):
     face_locations = face_recognition.face_locations(image)
     faces_num = len(face_locations)
     if faces_num < 1: # if we did not find any faces
-        return ((-1, "", "", ""))
+        return ((-1, "", "", "", ""))
 
     selected_face = get_largest_rect(face_locations) # get face rectangle with the biggest area
     
