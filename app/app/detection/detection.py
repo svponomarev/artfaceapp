@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw
 
 from app.utils.utils_artface import get_largest_rect
 
-FACE_PAD = 50 # padding for face rectangle used in image generation for age & gender prediction
+FACE_PAD = 0 # padding for face rectangle used in image generation for age & gender prediction
 
 def detect_faces(img_path):
     """detect faces on image, find the largest and saves images with marked face in 3 versions"""
@@ -23,25 +23,25 @@ def detect_faces(img_path):
         return ((-1, "", "", "", ""))
 
     selected_face = get_largest_rect(face_locations) # get face rectangle with the biggest area
-    
+
     top, right, bottom, left = face_locations[selected_face] # get corner coordinates for selected face
-    
+
     # cropping image to save only face rectangle with padding
     pil_image_frame = Image.fromarray(image)
     pil_image_mask = pil_image_frame.copy()
     draw_frame = ImageDraw.Draw(pil_image_frame)
-    
+
     width = right - left
     height = bottom - top
 
     upper_cut = [min(pil_image_frame.size[1], top + height + FACE_PAD), min(pil_image_frame.size[0], left + width + FACE_PAD)]
     lower_cut = [max(top - FACE_PAD, 0), max(left - FACE_PAD, 0)]
-    
+
     n_left = lower_cut[1]
     n_top = lower_cut[0]
     n_width = upper_cut[1] - lower_cut[1]
     n_height = upper_cut[0] - lower_cut[0]
-    
+
     pil_image_crop = pil_image_frame.crop((n_left, n_top, n_left + n_width, n_top + n_height))
     pil_image_crop.save(img_crop_path, "JPEG")
 
@@ -52,7 +52,7 @@ def detect_faces(img_path):
         draw_frame.rectangle(face_rect, outline=(0,255,0,255)) 
         face_rect = (face_rect[0] + 1,face_rect[1] + 1, face_rect[2] + 1, face_rect[3] + 1)
     pil_image_frame.save(img_rect_path, "JPEG")
-    
+
     # drawing facial mask with face contours on image
     facial_features = [
         'chin',
@@ -76,4 +76,4 @@ def detect_faces(img_path):
     ratio = float(height)/width
 
     return ((faces_num, img_crop_path, img_rect_path, img_mask_path, ratio))
-    
+

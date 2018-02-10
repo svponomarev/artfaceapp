@@ -1,8 +1,7 @@
 # ArtFaceApp utils/tf_prediction
 
 This directory contains scripts for building tensorflow serving container with neural nets predicting age and gender of person by face image:
-- age_prediction.py - python script for exporting age prediction model into pb format;
-- gender_prediction.py - python script for exporting gender prediction model into pb format;
+- age_gender_prediction.py - python script for exporting age/gender prediction model into pb format;
 - Dockerfile.devel - fixed dockerfile for building docker image of tensorflow serving (standard dockerfile is changed to fix error: 'isnan' was not declared in this scope).
 
 ## Building instructions:

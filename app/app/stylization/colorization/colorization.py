@@ -2,7 +2,6 @@
 # # -*- coding: utf-8 -*-
 """ === colorization.py: script for colorizing images using caffe neural network === """      
 import os
-import caffe
 import uuid
 import numpy as np
 import skimage.color as color
@@ -11,6 +10,7 @@ import scipy.ndimage.interpolation as sni
 
 from PIL import Image, ImageStat
 
+import caffe
 # load model files for caffe neural network https://github.com/richzhang/colorization
 cur_dir = os.path.dirname(os.path.realpath(__file__))
 prototxt = cur_dir + '/models/colorization_deploy_v2.prototxt'

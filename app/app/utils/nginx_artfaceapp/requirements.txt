@@ -10,3 +10,6 @@ grpcio-tools
 scikit-image
 python-aalib
 Naked
+opencv-python
+dlib
+imutils

@@ -9,6 +9,7 @@ import rfc6266
 import json
 import csv
 
+import caffe
 from PIL import Image
 from flask import Flask, render_template, request, flash, redirect, url_for, session, jsonify
 from werkzeug import secure_filename
@@ -279,8 +280,9 @@ def ajax_prediction():
     json = request.get_json()
     if not json:
         return
-    img_path = session["img_crop_path"]
-    age, age_prob, gender, gender_prob = params_prediction(img_path)
+    img_path = session["img_path"]
+    img_crop_path = session["img_crop_path"]
+    age, age_prob, gender, gender_prob = params_prediction(img_path, img_crop_path) # using original image to prepare face rectangle for neural net
     # convert certainty of prediction in percents
     age_prob = int(age_prob * 100)
     gender_prob = int(gender_prob * 100)

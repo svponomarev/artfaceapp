@@ -6,7 +6,7 @@ services:
       - ./app:/app
     ports:
       - "80:80"
-    #command: python app/main.py # uncomment for debug mode
+    command: python app/main.py # uncomment for debug mode
     networks:
         artfacenet:
             ipv4_address: 172.18.0.11

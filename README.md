@@ -61,7 +61,7 @@ $ docker-compose up --build
 
 ## Acknowledgements
 - [ageitgey/face_recognition][4] - face detection & matching algorithm;
-- [dpressel/rude-carnie][5] - age & gender prediction;
+- [BoyuanJiang/Age-Gender-Estimate-TF][5] - age & gender prediction;
 - [shunsukeaihara/colorcorrect][6] - automatic color equalization;
 - [richzhang/colorization][7] - automatic image colorization;
 - [acoomans/instagram-filters][8] - instagram-like image filters on Python;
@@ -83,7 +83,7 @@ $ docker-compose up --build
 [2]: http://artfaceapp.fvds.ru/
 [3]: https://hub.docker.com/u/svponomarev/
 [4]: https://github.com/ageitgey/face_recognition
-[5]: https://github.com/dpressel/rude-carnie
+[5]: https://github.com/BoyuanJiang/Age-Gender-Estimate-TF
 [6]: https://github.com/shunsukeaihara/colorcorrect
 [7]: https://github.com/richzhang/colorization
 [8]: https://github.com/acoomans/instagram-filters
