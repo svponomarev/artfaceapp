@@ -48,7 +48,7 @@ $ docker pull svponomarev/nginx-magenta
 
 Here you can find large files that stored separately (pre-trained age & gender checkpoints converted into .pb format + colorization model):
 
-https://drive.google.com/open?id=1SnluAuiwTjlo4tWL8hFnuUqWQGD-D6FX
+https://drive.google.com/open?id=1NgOtEroKEWYipCNHIhaeZSGKFMVd5j95
 
 Download them & extract into application directory artFaceApp/app/app
 
