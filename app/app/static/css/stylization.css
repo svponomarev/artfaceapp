@@ -2,10 +2,6 @@
 * === ARTFACEAPP: STYLIZATION PAGE STYLESHEET===
 */
 
-/* style for all images, show that they clickable */
-img {
-    cursor: pointer;
-}
 /* photo style image can be smaller, so center its content */
 #photo_img {
     text-align: center;
@@ -38,6 +34,15 @@ img {
     color: white;
     margin: 0;
     font: 24px Sans-Serif;
+}
+.hint-label a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font: 24px Sans-Serif;
+}
+.hint-label a:hover {
+    color: #ccc;
 }
 /* style for links that used as selectors for decade and style */
 #DecadeFilters, #StyleFilters {

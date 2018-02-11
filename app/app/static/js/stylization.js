@@ -127,15 +127,15 @@ function applyEqualization(clr_path) {
                 $("#pic2").css("background-image", "url('" + json.eql_path + "')"); // set background for div pic2 in form of equalized image
                 var element = $('#origin').detach(); // detach original image from pic1 div 
                 $('#pic2').append(element); // place original image inside pic1 div
-                addHoverHint("#origin", "#hint-img"); // add hint showing that user can switch between original image and equalized
-                $("#origin").click( function() { // process click on original image frame
+                addHoverHint("#origin-rect", "#hint-img"); // add hint showing that user can switch between original image and equalized
+                $("#hint-img a").click( function() { // process click on original image frame
                     show_equalized = !show_equalized; // invert value of global variable
                     if (show_equalized) { // if we were showing original image
                         // extracting image from pic1 and adding it to pic2
                         var element = $('#origin').detach();
                         $("#pic2").append(element);
                         $("#pic2").fadeIn(500);
-                        $("#hint-img").text("Switch to original");
+                        $("#hint-img a").text("Switch to original");
                     } // if we were showing equalized image
                     else
                     {
@@ -145,7 +145,7 @@ function applyEqualization(clr_path) {
                             $("#pic1").append(element);
                             $("#pic1").fadeIn(500);
                         });
-                        $("#hint-img").text("Switch to equalized");
+                        $("#hint-img a").text("Switch to equalized");
                     }
                 });
                 prev_decade = $('#decade').val(); // store current processed decade into global variable
@@ -232,10 +232,10 @@ function applyStyleTransfer(eql_path) {
                             $("#photo-img").parent(".image-wrapper").css("padding-bottom",  String(ratio * 100) + "%");
                             adjustPhotoSizes();
                         });
-                        addHoverHint("#photo-img", "#hint-photo"); // add hint showing that user can read more about photo style of this decade
-                        $("#hint-photo").html("Learn about " +  decade + "'s photo");
+                        addHoverHint("#photo-rect", "#hint-photo"); // add hint showing that user can read more about photo style of this decade
+                        $("#hint-photo").html("<div class='col-md-6' style='align: center'><a class='learn-link'>Learn more</a></div><div class='col-md-6' style='align: center'><a href='" + json.processed_path +"'>Save image</a></div>");
                         // process click on photo stylized frame
-                        $("#photo-img").click( function() {post('/art', {decade: decade, form: 'photo'});}); // send POST request to the /art page
+                        $("#hint-photo .learn-link").click( function() {post('/art', {decade: decade, form: 'photo'});}); // send POST request to the /art page
                         $("#photo-img").parent(".image-wrapper").fadeIn(500, function() {
                             $("#photo-rect").fadeIn(500);
                         });
@@ -291,10 +291,10 @@ function applyStyleTransfer(eql_path) {
                     $("#StyleFilters a:eq(" + style_num + ")").addClass('Active'); // show that current random selected style is active
                     // removing loader class from image
                     $("#art-img").parent('.image-wrapper--loading').removeClass('image-wrapper--loading');
-                    addHoverHint("#art-img", "#hint-art"); // add hint showing that user can read more about art style of this decade
-                    $("#hint-art").html("Learn about " +  decade + "'s art");
+                    addHoverHint("#art-rect", "#hint-art"); // add hint showing that user can read more about art style of this decade
+                    $("#hint-art").html("<div class='col-md-6' style='align: center'><a class='learn-link'>Learn more</a></div><div class='col-md-6' style='align: center'><a href='" + json.processed_path + "'>Save image</a></div>");
                     // process click on art stylized frame
-                    $("#art-img").click( function() {post('/art', {decade: decade, form: 'art'});}); // send POST request to the /art page
+                    $("#hint-art .learn-link").click( function() {post('/art', {decade: decade, form: 'art'});}); // send POST request to the /art page
                     $("#art-rect").fadeIn(500);
                     reloadPanel();
                 });         
@@ -365,10 +365,10 @@ function applyArtTransfer(eql_path, style_num) {
                 });
                 // removing loader class from image
                 $("#art-img").parent('.image-wrapper--loading').removeClass('image-wrapper--loading');
-                addHoverHint("#art-img", "#hint-art"); // reset hint showing that user can read more about art style of this decade
-                $("#hint-art").html("Learn about " +  decade + "'s art");
+                addHoverHint("#art-rect", "#hint-art"); // reset hint showing that user can read more about art style of this decade
+                $("#hint-art").html("<div class='col-md-6' style='align: center'><a class='learn-link'>Learn more</a></div><div class='col-md-6' style='align: center'><a href='" + json.processed_path + "'>Save image</a></div>");
                 // rebind click processing on art stylized frame
-                $("#art-img").click( function() {post('/art', {decade: decade, form: 'art'}); }); // send POST request to the /art page
+                $("#hint-art .learn-link").click( function() {post('/art', {decade: decade, form: 'art'}); }); // send POST request to the /art page
             },
         error: function(xhr, ajaxOptions, thrownError) {
                 // error handling
