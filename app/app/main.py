@@ -8,8 +8,9 @@ import requests
 import rfc6266
 import json
 import csv
-
 import caffe
+import dlib
+
 from PIL import Image
 from flask import Flask, render_template, request, flash, redirect, url_for, session, jsonify
 from werkzeug import secure_filename
@@ -17,6 +18,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from StringIO import StringIO
+from imutils.face_utils import FaceAligner
 
 from app.detection.detection import detect_faces
 from app.matching.matching import match_faces
@@ -30,6 +32,11 @@ UPLOAD_FOLDER = 'app/static/uploads' # path to the folder with processed images
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg']) # allowed extensions for uploading image files on server
 SMALLEST_SIDE = 384 # all images on the final stylization step will be resized in such way that this size will be for its smallest side
 STYLES_DB = 'app/static/db/db_styles.csv' # path to the csv file with articles about art and photo styles
+
+#preloading dlib shape detector and face aligner
+dir_path = os.path.dirname(os.path.realpath(__file__))
+predictor = dlib.shape_predictor(dir_path + "/detection/prediction/models/shape_predictor_68_face_landmarks.dat")
+face_aligner = FaceAligner(predictor, desiredFaceWidth=160)
 
 # initializing Flask server
 app = Flask(__name__, static_url_path='/app/static')
@@ -282,7 +289,7 @@ def ajax_prediction():
         return
     img_path = session["img_path"]
     img_crop_path = session["img_crop_path"]
-    age, age_prob, gender, gender_prob = params_prediction(img_path, img_crop_path) # using original image to prepare face rectangle for neural net
+    age, age_prob, gender, gender_prob = params_prediction(img_path, img_crop_path, face_aligner) # using original image to prepare face rectangle for neural net
     # convert certainty of prediction in percents
     age_prob = int(age_prob * 100)
     gender_prob = int(gender_prob * 100)

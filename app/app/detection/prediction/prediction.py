@@ -15,15 +15,12 @@ from grpc.beta import implementations
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2
 
-from imutils.face_utils import FaceAligner
 from imutils.face_utils import rect_to_bb
 
 # Command line arguments
 tf.app.flags.DEFINE_string('prediction_server', '172.18.0.12:9000',
                            'PredictionService host:port')
 FLAGS = tf.app.flags.FLAGS
-
-dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def get_dlib_largest_rect(rects):
     largest = 0
@@ -74,7 +71,7 @@ class TensorflowServingClient(object):
         gc.collect()
         
 
-def params_prediction(img_path, img_crop_path):
+def params_prediction(img_path, img_crop_path, face_aligner):
     """predicts age and gender of person using input image with cropped face rectangle"""
     # trying to detect face with dlib and process it for neural net
     detector = dlib.get_frontal_face_detector()
@@ -84,9 +81,7 @@ def params_prediction(img_path, img_crop_path):
     rect_nums = len(rects)
     if rect_nums != 0:
         largest = get_dlib_largest_rect(rects) # get face rectangle with the biggest area (dlib)
-        predictor = dlib.shape_predictor(dir_path + "/models/shape_predictor_68_face_landmarks.dat")
-        fa = FaceAligner(predictor, desiredFaceWidth=160)
-        aligned_image = fa.align(imagecv, gray, rects[largest]) 
+        aligned_image = face_aligner.align(imagecv, gray, rects[largest]) 
         cv2.imwrite(img_crop_path, aligned_image) # cropping image to save only face rectangle for age/gender prediction
 
     host, port = FLAGS.prediction_server.split(':')
