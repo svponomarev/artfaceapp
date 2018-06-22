@@ -6,7 +6,7 @@ This project is a website that allows you to upload a photo of a person's face a
 
 This project allows you to learn more about the art of the twentieth century and popular people of that time, and also perhaps learn something more about yourself. From a technical point of view, the project is interesting because it uses computer vision techniques for face comparison and convolutional neural networks for image style transfer.
 
-Working ArtFaceApp server currently can be accessed at [artfaceapp.fvds.ru][2]
+Working ArtFaceApp server currently can be accessed at [artfaceapp.ru][2]
 
 Build Docker images can be found at [Docker Hub][3].
 
@@ -80,7 +80,7 @@ $ docker-compose up --build
 * **Svyatoslav Ponomarev** - sv.v.ponomarev@gmail.com
 
 [1]: https://docs.cs50.net/2017/x/project.html
-[2]: http://artfaceapp.fvds.ru/
+[2]: https://artfaceapp.ru/
 [3]: https://hub.docker.com/u/svponomarev/
 [4]: https://github.com/ageitgey/face_recognition
 [5]: https://github.com/BoyuanJiang/Age-Gender-Estimate-TF
